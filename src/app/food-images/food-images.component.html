@@ -1,0 +1,64 @@
+<!-- <div class="container">
+  <h1 class="text-center">Flickr</h1>
+  <div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-4 p-3" *ngFor="let image of images">
+      <div class="card">
+        <a href="{{image.url}}_b.jpg" (click)="foodSelected(image)">
+          <img src="{{image.url}}_m.jpg" title="{{image.title}}">
+          <div class="card-body food-content">
+            <div class="row">
+              <div class="col-sm-12">
+                <ngx-stars [readonly]="true" [size]="2" [maxStars]="10" [initialStars]="checkAlreadyReviewed(image.id)"></ngx-stars>
+              </div>
+            </div>
+        </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div
+    class="search-results"
+    infiniteScroll
+    [infiniteScrollDistance]="2"
+    [infiniteScrollThrottle]="50"
+    (scrolled)="onScroll()">
+  </div>
+</div> -->
+
+
+<div class="row">
+  <div class="col-sm-12">
+    <div class="pages">
+      <div class="prev-page" *ngIf="pageNumber!=1">
+        <a href="javascript:void(0);" class="page-link" (click)="pageNumber=pageNumber-1; getFoodList()" >&laquo; Previous page</a>
+      </div>
+      <div class="next-page">
+        <a href="javascript:void(0);" class="page-link" (click)="pageNumber=pageNumber+1; getFoodList()" > Next page &raquo;</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-12">
+    <div class="page-no">
+      <p> Page number: {{pageNumber}}</p>
+    </div>
+  </div>
+  <div class="col-sm-12 food-list">
+    <div class="loader" *ngIf="showLoader"> </div>
+  </div>
+  <div class="col-sm-4 food-list" *ngFor="let food of foodList">
+      <div class="card food-item">
+        <a href="javascript:void(0);" (click)="foodSelected(food)">
+          <div class="food-image">
+            <img class="card-img-top hoverable" [src]="getImageUrl(food)" alt="Card image">
+          </div>
+          <div class="card-body food-content">
+            <div class="row">
+              <div class="col-sm-12">
+                <ngx-stars [readonly]="true" [size]="2" [maxStars]="10" [initialStars]="checkAlreadyReviewed(food.id)"></ngx-stars>
+              </div>
+            </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
